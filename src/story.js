@@ -5,7 +5,7 @@ const showStats = require("./stats");
 const showStory = () => {
     const { commits, repoName } = getGitLogs();
 
-    console.log(`📖 Git Story`);
+    console.log(`📖 Git Repo Story`);
     console.log("Repository: ",repoName);
 
     console.log("\n━━━━━━━━━━━━━━━━━━");

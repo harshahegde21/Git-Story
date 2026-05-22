@@ -1,17 +1,24 @@
 {
-  "name": "git-story",
+  "name": "repo-story",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "A tool that summarizes all git activity in a repository",
+  "main": "src/story.js",
   "bin": {
-    "git-story":"./bin/git-story.js"
+    "repo-story": "./bin/git-story.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"No tests yet\""
   },
-  "keywords": [],
+  "keywords": [
+    "git",
+    "cli",
+    "repository",
+    "contributors",
+    "timeline",
+    "stats"
+  ],
   "author": "Harsha Hegde",
   "license": "ISC",
-  "description": "A tool that summarizes all git activity on the repository",
   "dependencies": {
     "commander": "^14.0.3"
   }
