@@ -1,9 +1,36 @@
-const {execSync} = require("child_process")
+const { execFileSync } = require("child_process");
 
-// function to get the all git logs
-const getGitLogs = ()=>{
-    const data = execSync('git log --pretty=format="%ad|%an|%s" --date=short' );
-    return data.toString();
+function getGitLogs() {
+    try {
+        const data = execFileSync(
+            "git",
+            [
+                "log",
+                "--pretty=format:%ad|%an|%s",
+                "--date=short"
+            ],
+            {
+                encoding: "utf8"
+            }
+        );
+
+        return data
+            .split("\n")
+            .filter(Boolean)
+            .map(line => {
+                const [date, author, message] = line.split("|");
+
+                return {
+                    date,
+                    author,
+                    message
+                };
+            });
+
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
 }
 
-module.exports = getGitLogs
+module.exports = getGitLogs;
