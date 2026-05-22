@@ -11,8 +11,8 @@ const emojiMap = {
 };
 // function to show the timeline
 const showTimeLine = ()=>{
-    const commits = gitLogs();
-    console.log("\n📖 Project Story\n");
+    const {commits,repoName} = gitLogs();
+    
     commits.forEach(commit=>{
         const parts = commit.message.split(":");
         const type = parts[0]?.trim();

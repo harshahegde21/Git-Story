@@ -2,13 +2,16 @@
   "name": "git-story",
   "version": "1.0.0",
   "main": "index.js",
+  "bin": {
+    "git-story":"./bin/git-story.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Harsha Hegde",
   "license": "ISC",
-  "description": "",
+  "description": "A tool that summarizes all git activity on the repository",
   "dependencies": {
     "commander": "^14.0.3"
   }

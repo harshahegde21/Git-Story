@@ -1,7 +1,14 @@
 const { execFileSync } = require("child_process");
-
+const path = require("path")
 function getGitLogs() {
     try {
+        const root = execFileSync(
+            "git",
+            ["rev-parse", "--show-toplevel"],
+            {
+                encoding: "utf8"
+            }
+        ).trim();
         const data = execFileSync(
             "git",
             [
@@ -13,8 +20,8 @@ function getGitLogs() {
                 encoding: "utf8"
             }
         );
-
-        return data
+        const repoName = path.basename(root)
+        const commits =  data
             .split("\n")
             .filter(Boolean)
             .map(line => {
@@ -26,10 +33,11 @@ function getGitLogs() {
                     message
                 };
             });
+            return {commits,repoName}
 
     } catch (error) {
-        console.error(error);
-        return [];
+        console.log("❌ Not inside a Git repository");
+        process.exit(1);
     }
 }
 
